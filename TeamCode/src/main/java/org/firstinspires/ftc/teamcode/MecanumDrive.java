@@ -60,10 +60,10 @@ public final class MecanumDrive {
         public RevHubOrientationOnRobot.LogoFacingDirection logoFacingDirection =
                 RevHubOrientationOnRobot.LogoFacingDirection.UP;
         public RevHubOrientationOnRobot.UsbFacingDirection usbFacingDirection =
-                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
+                RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD;
 
         // drive model parameters
-        public double inPerTick = 1;
+        public double inPerTick = 0.0088797;
         public double lateralInPerTick = inPerTick;
         public double trackWidthTicks = 0;
 
@@ -229,6 +229,9 @@ public final class MecanumDrive {
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+
         // TODO: reverse motor directions if needed
         //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -241,7 +244,6 @@ public final class MecanumDrive {
 
         // The parallel encoders MUST be called par0 and par1 and the perpendicular one must be called perp
         localizer = new ThreeDeadWheelLocalizer(hardwareMap, PARAMS.inPerTick);
-
         FlightRecorder.write("MECANUM_PARAMS", PARAMS);
     }
 
