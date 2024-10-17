@@ -3,10 +3,12 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.IMU;
-
+import com.qualcomm.robotcore.hardware.Servo;
+@TeleOp
 public class FieldCentricTeleOp extends LinearOpMode {
     @Override
     public void runOpMode() {
@@ -16,18 +18,25 @@ public class FieldCentricTeleOp extends LinearOpMode {
         DcMotor backRightMotor = hardwareMap.dcMotor.get("rightBack");
         DcMotor slideLeftMotor = hardwareMap.dcMotor.get("slideLeftMotor");
         DcMotor slideRightMotor = hardwareMap.dcMotor.get("slideRightMotor");
+        Servo claw = hardwareMap.servo.get("claw");
+        Servo armLeft = hardwareMap.servo.get("armLeft");
+        Servo armRight = hardwareMap.servo.get("armRight");
+
 
         double armPosition = 0;
 
         frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         slideRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        armLeft.setDirection(Servo.Direction.REVERSE);
 
         IMU imu = hardwareMap.get(IMU.class, "imu");
 
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.UP,
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD));
+//        slideLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        slideRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         imu.initialize(parameters);
 
         waitForStart();
@@ -35,6 +44,7 @@ public class FieldCentricTeleOp extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
+            telemetry.addData("Claw", claw.getPosition());
             double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
             double x = gamepad1.left_stick_x;
             double rx = gamepad1.right_stick_x;
@@ -63,6 +73,12 @@ public class FieldCentricTeleOp extends LinearOpMode {
             double frontRightPower = (rotY - rotX - rx) / denominator;
             double backRightPower = (rotY + rotX - rx) / denominator;
 
+            if (gamepad2.left_bumper) {
+                claw.setPosition(1);
+            } else if (gamepad2.right_bumper) {
+                claw.setPosition(0);
+            }
+
             if (gamepad1.a) {
                 armPosition = 300;
                 // TODO: Low chamber
@@ -81,8 +97,8 @@ public class FieldCentricTeleOp extends LinearOpMode {
             backLeftMotor.setPower(backLeftPower);
             frontRightMotor.setPower(frontRightPower);
             backRightMotor.setPower(backRightPower);
-            slideLeftMotor.setPower(armPosition);
-            slideRightMotor.setPower(armPosition);
+            slideLeftMotor.setPower(-gamepad2.left_stick_y);
+            slideRightMotor.setPower(-gamepad2.left_stick_y);
         }
     }
 }
