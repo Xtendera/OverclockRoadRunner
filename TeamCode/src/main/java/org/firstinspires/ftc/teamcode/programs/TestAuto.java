@@ -21,30 +21,9 @@ public final class TestAuto extends LinearOpMode {
         MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
         waitForStart();
         SliderAction sliderAction = new SliderAction(hardwareMap);
-        Actions.runBlocking(new SequentialAction(
-                drive.actionBuilder(new Pose2d(10, 61, Math.toRadians(0))).strafeToLinearHeading(new Vector2d(45, 61), Math.toRadians(0))
-                        .waitSeconds(.5)
-                        //Score
-                        .strafeToLinearHeading(new Vector2d(48, 41), Math.toRadians(90))
-                        .waitSeconds(.5)
-                        //Intake
-                        .strafeToLinearHeading(new Vector2d(50, 50), Math.toRadians(45))
-                        .waitSeconds(.5)
-                        //Score
-                        .strafeToLinearHeading(new Vector2d(58, 40), Math.toRadians(90))
-                        .waitSeconds(.5)
-                        //Intake
-                        .strafeToLinearHeading(new Vector2d(57, 50), Math.toRadians(55))
-                        .waitSeconds(.5)
-                        //Score
-                        .strafeToLinearHeading(new Vector2d(58, 37), Math.toRadians(130))
-                        .waitSeconds(.5)
-                        //Intake
-                        .splineTo(new Vector2d(57, 50), Math.toRadians(55))
-                        .waitSeconds(.5)
-                        //Score
-                        .build(),
+        Actions.runBlocking(new ParallelAction(
                 sliderAction.sliderGoUp()
+//                drive.actionBuilder()
                 )
         );
     }

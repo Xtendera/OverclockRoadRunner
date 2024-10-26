@@ -28,8 +28,12 @@ public class SliderAction {
                 isInit = true;
             }
 
-            telemetryPacket.put("slideRightPos:", sliderRightMotor.getCurrentPosition());
-            return sliderRightMotor.getCurrentPosition() < 1000 && sliderLeftMotor.getCurrentPosition() < 1000;
+            if (sliderRightMotor.getCurrentPosition() < 1000 && sliderLeftMotor.getCurrentPosition() < 1000) {
+                return true;
+            }
+            sliderRightMotor.setPower(0);
+            sliderLeftMotor.setPower(0);
+            return false;
         }
     }
     public Action sliderGoUp() {
