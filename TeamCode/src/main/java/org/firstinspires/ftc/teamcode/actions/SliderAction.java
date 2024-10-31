@@ -18,7 +18,7 @@ public class SliderAction {
         sliderRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
-    public class SliderGoUp implements Action {
+    public class LowChamber implements Action {
         private boolean isInit = false;
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
@@ -31,12 +31,105 @@ public class SliderAction {
             if (sliderRightMotor.getCurrentPosition() < 1000 && sliderLeftMotor.getCurrentPosition() < 1000) {
                 return true;
             }
-            sliderRightMotor.setPower(0);
-            sliderLeftMotor.setPower(0);
             return false;
         }
     }
-    public Action sliderGoUp() {
-        return new SliderGoUp();
+    public class SpecHighChamber implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                sliderRightMotor.setTargetPosition(1320);
+                sliderLeftMotor.setTargetPosition(1320);
+                sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderRightMotor.setPower(0.6);
+                sliderLeftMotor.setPower(0.6);
+                isInit = true;
+            }
+
+            if (sliderRightMotor.getCurrentPosition() < 1320 && sliderLeftMotor.getCurrentPosition() < 1320) {
+                return true;
+            }
+            return false;
+        }
+    }
+    public class HighChamber implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                sliderRightMotor.setTargetPosition(1100);
+                sliderLeftMotor.setTargetPosition(1100);
+                sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderRightMotor.setPower(0.6);
+                sliderLeftMotor.setPower(0.6);
+                isInit = true;
+            }
+
+            if (sliderRightMotor.getCurrentPosition() < 1100 && sliderLeftMotor.getCurrentPosition() < 1100) {
+                return true;
+            }
+            return false;
+        }
+    }
+    public class ClipSpec implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                sliderRightMotor.setTargetPosition(1500);
+                sliderLeftMotor.setTargetPosition(1500);
+                sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderRightMotor.setPower(0.6);
+                sliderLeftMotor.setPower(0.6);
+                isInit = true;
+            }
+
+            if (sliderRightMotor.getCurrentPosition() < 1500 && sliderLeftMotor.getCurrentPosition() < 1500) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public class Reset implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                sliderRightMotor.setTargetPosition(0);
+                sliderLeftMotor.setTargetPosition(0);
+                sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderRightMotor.setPower(0.6);
+                sliderLeftMotor.setPower(0.6);
+                isInit = true;
+            }
+
+            if (sliderRightMotor.getCurrentPosition() < 0 && sliderLeftMotor.getCurrentPosition() < 0) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public Action lowChamber() {
+        return new LowChamber();
+    }
+    public Action highChamber() {
+        return new HighChamber();
+    }
+    public Action specHighChamber() {
+        return new SpecHighChamber();
+    }
+    public Action clipSpec() {
+        return new ClipSpec();
+    }
+
+    public Action reset() {
+        return new Reset();
     }
 }
