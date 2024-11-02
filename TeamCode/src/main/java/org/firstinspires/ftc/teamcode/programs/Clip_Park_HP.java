@@ -12,8 +12,8 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.actions.ClawAction;
 import org.firstinspires.ftc.teamcode.actions.SliderAction;
 
-@Autonomous(name = "Clip_Push3_HP")
-public class PreloadedClawClip extends LinearOpMode {
+@Autonomous(name = "Clip_Park_HP")
+public class Clip_Park_HP extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -34,19 +34,10 @@ public class PreloadedClawClip extends LinearOpMode {
                 clawAction.closeArm(),
                 sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(-8, 29,
-                        Math.toRadians(270))).
+                                Math.toRadians(270))).
                         //strafeTo(new Vector2d(-11, 48))
-                        strafeTo(new Vector2d(-8, 48)).
-                        strafeTo(new Vector2d(-36, 48)).
-                        strafeTo(new Vector2d(-36, 10)).
-                        strafeTo(new Vector2d(-46, 10)).
-                        strafeTo(new Vector2d(-46, 63)). //first push
-                        strafeTo(new Vector2d(-46, 10)). //back up
-                        strafeTo(new Vector2d(-57, 10)). //strafe to second piece
-                        strafeTo(new Vector2d(-57, 63)). //second push
-                        strafeTo(new Vector2d(-57, 10)). //back up
-                        strafeTo(new Vector2d(-63, 10)). //strafe
-                        strafeTo(new Vector2d(-63, 63)).build() //final push
+                            strafeTo(new Vector2d(-8, 60)).
+                            strafeTo(new Vector2d(-45,60)).build() //final push
 //                        turnTo(Math.toRadians(93)).
 //                        strafeTo(new Vector2d(-34, 48)).
 //                        strafeTo(new Vector2d(-34, 7)).
@@ -54,7 +45,7 @@ public class PreloadedClawClip extends LinearOpMode {
 //                        strafeToLinearHeading(new Vector2d(-43, 7), Math.toRadians(183)).
 //                        strafeTo(new Vector2d(-43, 57)).
 //                        strafeTo(new Vector2d(-43, 10)).strafeTo(new Vector2d(-52, 10)).strafeTo(new Vector2d(-52, 57)).build()
-                        ));
-                        // sleep(9999999);
+        ));
+        // sleep(9999999);
     }
 }

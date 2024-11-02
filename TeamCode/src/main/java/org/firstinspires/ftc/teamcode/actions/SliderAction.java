@@ -94,6 +94,26 @@ public class SliderAction {
             return false;
         }
     }
+    public class HighBucket implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                sliderRightMotor.setTargetPosition(3300);
+                sliderLeftMotor.setTargetPosition(3300);
+                sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderRightMotor.setPower(0.8);
+                sliderLeftMotor.setPower(0.8);
+                isInit = true;
+            }
+
+            if (sliderRightMotor.getCurrentPosition() < 3300 && sliderLeftMotor.getCurrentPosition() < 3300) {
+                return true;
+            }
+            return false;
+        }
+    }
 
     public class Reset implements Action {
         private boolean isInit = false;
@@ -128,7 +148,9 @@ public class SliderAction {
     public Action clipSpec() {
         return new ClipSpec();
     }
-
+    public Action HighBucket() {
+        return new HighBucket();
+    }
     public Action reset() {
         return new Reset();
     }

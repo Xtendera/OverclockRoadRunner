@@ -58,6 +58,41 @@ public class ClawAction {
         }
     }
 
+    public class ArmHover implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                armLeft.setPosition(0.42);
+                isInit = true;
+            }
+            return Math.abs(armLeft.getPosition() - 0.42) > 0.02;
+        }
+    }
+
+    public class ArmCollect implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                armLeft.setPosition(0.48);
+                isInit = true;
+            }
+            return Math.abs(armLeft.getPosition() - 0.48) > 0.02;
+        }
+    }
+    public class ArmBasket implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                armLeft.setPosition(0.29);
+                isInit = true;
+            }
+            return Math.abs(armLeft.getPosition() - 0.29) > 0.02;
+        }
+    }
+
     public Action closeClaw() {
         return new CloseClaw();
     }
@@ -69,4 +104,14 @@ public class ClawAction {
     public Action openClaw() {
         return new OpenClaw();
     }
+    public Action armHover() {
+        return new ArmHover();
+    }
+    public Action armCollect() {
+        return new ArmCollect();
+    }
+    public Action armBasket() {
+        return new ArmBasket();
+    }
+
 }
