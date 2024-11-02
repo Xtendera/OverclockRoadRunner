@@ -12,8 +12,8 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.actions.ClawAction;
 import org.firstinspires.ftc.teamcode.actions.SliderAction;
 
-@Autonomous(name = "Clip_1basket_park_Basket")
-public class Clip_1basket_park_Basket extends LinearOpMode {
+@Autonomous(name = "Clip_Push3_Bucket")
+public class Clip_Push3_Bucket extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -35,26 +35,27 @@ public class Clip_1basket_park_Basket extends LinearOpMode {
                 sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(8, 29,
                                 Math.toRadians(270))).
-                            strafeTo(new Vector2d(8, 48)). //back up
-                            strafeTo(new Vector2d(49.5, 46)).build(), //change x,y based on where to pick up
-                            clawAction.armHover(),//drop arm
-                            clawAction.armCollect(),//
-                            clawAction.closeClaw(),
-                            clawAction.closeArm(),
-                drive.actionBuilder(new Pose2d(48, 46,
-                        Math.toRadians(270))).
-                        turnTo(Math.toRadians(90)).
-                        strafeTo(new Vector2d(57,57)).
-                        turnTo(Math.toRadians(45)).build(),
-                        sliderAction.HighBucket(),//elevator
-                        clawAction.armBasket(),//arm score
-                        clawAction.openClaw(),//claw open
-                        clawAction.closeArm(),
-                        sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(57, 57,
-                                Math.toRadians(45))).
-                        strafeTo(new Vector2d(-45,60)).build()
-                ));
-
+                        //strafeTo(new Vector2d(-11, 48))
+                                strafeTo(new Vector2d(8, 48)).
+                        strafeTo(new Vector2d(36, 48)).
+                        strafeTo(new Vector2d(36, 10)).
+                        //turnTo(Math.toRadians(90)).
+                        strafeTo(new Vector2d(48, 10)).
+                        strafeTo(new Vector2d(48, 61)). //first push
+                        strafeTo(new Vector2d(46, 10)). //back up
+                        strafeTo(new Vector2d(57, 10)). //strafe to second piece
+                        strafeTo(new Vector2d(57, 55)). //second push
+                        strafeTo(new Vector2d(57, 10)). //back up
+                        strafeTo(new Vector2d(63, 10)). //strafe
+                        strafeTo(new Vector2d(63, 53)).build() //final push
+//                        turnTo(Math.toRadians(93)).
+//                        strafeTo(new Vector2d(-34, 48)).
+//                        strafeTo(new Vector2d(-34, 7)).
+//                        turnTo(133).
+//                        strafeToLinearHeading(new Vector2d(-43, 7), Math.toRadians(183)).
+//                        strafeTo(new Vector2d(-43, 57)).
+//                        strafeTo(new Vector2d(-43, 10)).strafeTo(new Vector2d(-52, 10)).strafeTo(new Vector2d(-52, 57)).build()
+        ));
+        // sleep(9999999);
     }
 }
