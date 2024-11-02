@@ -13,8 +13,8 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.actions.ClawAction;
 import org.firstinspires.ftc.teamcode.actions.SliderAction;
 
-@Autonomous(name = "Clip_Push3_Bucket")
-public class Clip_Push3_Bucket extends LinearOpMode {
+@Autonomous(name = "Clip_Push3_Park_Bucket")
+public class Clip_Push3_Park_Bucket extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -35,26 +35,29 @@ public class Clip_Push3_Bucket extends LinearOpMode {
 //                clawAction.closeArm(),
 //                sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(8, 29,
-                                Math.toRadians(270))).build(),
+                        Math.toRadians(270))).build(),
 //                                clawAction.closeArm(),
 //                                sliderAction.reset(),
-                        //strafeTo(new Vector2d(-11, 48))
+                //strafeTo(new Vector2d(-11, 48))
                 drive.actionBuilder(new Pose2d(8,29, Math.toRadians(270))).
                         strafeTo(new Vector2d(8, 48)).build(),
-                        clawAction.closeArm(),
-                        sliderAction.reset(),
+                clawAction.closeArm(),
+                sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(8,48,Math.toRadians(270))).
                         strafeTo(new Vector2d(36, 48)).
                         strafeTo(new Vector2d(36, 10)).
                         //turnTo(Math.toRadians(90)).
-                        strafeTo(new Vector2d(48, 10)).
+                                strafeTo(new Vector2d(48, 10)).
                         strafeTo(new Vector2d(48, 61)). //first push
                         strafeTo(new Vector2d(46, 10)). //back up
                         strafeTo(new Vector2d(57, 10)). //strafe to second piece
                         strafeTo(new Vector2d(57, 55)). //second push
                         strafeTo(new Vector2d(57, 10)). //back up
                         strafeTo(new Vector2d(63, 10)). //strafe
-                        strafeTo(new Vector2d(63, 53)).build()
+                        strafeTo(new Vector2d(63, 53)).
+                        strafeTo(new Vector2d(63, 40)).
+                        strafeTo(new Vector2d(-40,40)).
+                        strafeTo(new Vector2d(-40,60)).build() //final push
 
 //                        turnTo(Math.toRadians(93)).
 //                        strafeTo(new Vector2d(-34, 48)).
