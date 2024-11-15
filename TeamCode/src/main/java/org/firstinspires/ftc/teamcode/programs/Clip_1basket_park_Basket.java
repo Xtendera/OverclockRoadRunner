@@ -25,9 +25,9 @@ public class Clip_1basket_park_Basket extends LinearOpMode {
 
         Actions.runBlocking(new SequentialAction(new ParallelAction(
                 drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
-                sliderAction.specHighChamber()
+                sliderAction.highChamberLoad()
         ),
-                sliderAction.clipSpec(),
+                sliderAction.highChamberScore(),
                 drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).strafeTo(new Vector2d(8, 29)).
                         build(),
                 clawAction.openClaw(),

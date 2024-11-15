@@ -34,13 +34,13 @@ public class SliderAction {
             return false;
         }
     }
-    public class SpecHighChamber implements Action {
+    public class HighChamberLoad implements Action {
         private boolean isInit = false;
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition(1320);
-                sliderLeftMotor.setTargetPosition(1320);
+                sliderRightMotor.setTargetPosition((int) (519*3.528));
+                sliderLeftMotor.setTargetPosition((int) (519*3.528));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(0.6);
@@ -48,7 +48,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < 1320 && sliderLeftMotor.getCurrentPosition() < 1320) {
+            if (sliderRightMotor.getCurrentPosition() < (int) (519*3.528) && sliderLeftMotor.getCurrentPosition() < (int) (519*3.528)) {
                 return true;
             }
             return false;
@@ -74,13 +74,13 @@ public class SliderAction {
             return false;
         }
     }
-    public class ClipSpec implements Action {
+    public class HighChamberScore implements Action {
         private boolean isInit = false;
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition(1500);
-                sliderLeftMotor.setTargetPosition(1500);
+                sliderRightMotor.setTargetPosition((int) (397*3.528));
+                sliderLeftMotor.setTargetPosition((int) (397*3.528));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(0.6);
@@ -88,7 +88,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < 1500 && sliderLeftMotor.getCurrentPosition() < 1500) {
+            if (sliderRightMotor.getCurrentPosition() < (int) (397*3.528) && sliderLeftMotor.getCurrentPosition() < (int) (397*3.528)) {
                 return true;
             }
             return false;
@@ -142,11 +142,11 @@ public class SliderAction {
     public Action highChamber() {
         return new HighChamber();
     }
-    public Action specHighChamber() {
-        return new SpecHighChamber();
+    public Action highChamberLoad() {
+        return new HighChamberLoad();
     }
-    public Action clipSpec() {
-        return new ClipSpec();
+    public Action highChamberScore() {
+        return new HighChamberScore();
     }
     public Action HighBucket() {
         return new HighBucket();

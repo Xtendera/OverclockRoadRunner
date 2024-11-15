@@ -1,60 +1,61 @@
 package org.firstinspires.ftc.teamcode.actions;
-
+//
 import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.acmerobotics.roadrunner.SleepAction;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class ClawAction {
-    private final Servo clawServo;
+//    private final Servo clawServo;
     private final Servo armLeft;
 
     public ClawAction(HardwareMap hardwareMap) {
-        clawServo = hardwareMap.servo.get("claw");
-        armLeft = hardwareMap.servo.get("armRight");
-        clawServo.setPosition(0.85);
-        armLeft.setPosition(0.25);
+//        clawServo = hardwareMap.servo.get("claw");
+        armLeft = hardwareMap.servo.get("arm");
+//        clawServo.setPosition(0.85);
+        armLeft.setPosition(0.11);
     }
 
-    public class CloseClaw implements Action {
-        private boolean isInit = false;
-        @Override
-        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            if (!isInit) {
-                clawServo.setPosition(0.85);
-                isInit = true;
-            }
-
-            return Math.abs(clawServo.getPosition() - 0.85) > 0.02;
-        }
-    }
-
-    public class OpenClaw implements Action {
-        private boolean isInit = false;
-        @Override
-        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            if (!isInit) {
-                clawServo.setPosition(0.35);
-                isInit = true;
-            }
-
-            return Math.abs(clawServo.getPosition() - 0.35) > 0.02;
-        }
-    }
+//    public class CloseClaw implements Action {
+//        private boolean isInit = false;
+//        @Override
+//        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+//            if (!isInit) {
+//                clawServo.setPosition(0.85);
+//                isInit = true;
+//            }
+//
+//            return Math.abs(clawServo.getPosition() - 0.85) > 0.02;
+//        }
+//    }
+//
+//    public class OpenClaw implements Action {
+//        private boolean isInit = false;
+//        @Override
+//        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+//            if (!isInit) {
+//                clawServo.setPosition(0.35);
+//                isInit = true;
+//            }
+//
+//            return Math.abs(clawServo.getPosition() - 0.35) > 0.02;
+//        }
+//    }
 
     public class CloseArm implements Action {
         private boolean isInit = false;
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                armLeft.setPosition(0);
+                armLeft.setPosition(0.11);
                 isInit = true;
             }
 
-            return Math.abs(armLeft.getPosition()) > 0.02;
+            return Math.abs(armLeft.getPosition() - 0.11) > 0.02;
         }
     }
 
@@ -94,7 +95,7 @@ public class ClawAction {
     }
 
     public Action closeClaw() {
-        return new CloseClaw();
+        return new SleepAction(0.25);
     }
 
     public Action closeArm() {
@@ -102,7 +103,7 @@ public class ClawAction {
     }
 
     public Action openClaw() {
-        return new OpenClaw();
+        return new SleepAction(0.25);
     }
     public Action armHover() {
         return new ArmHover();

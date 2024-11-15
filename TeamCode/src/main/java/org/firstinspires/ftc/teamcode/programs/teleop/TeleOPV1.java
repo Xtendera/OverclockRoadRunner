@@ -93,8 +93,8 @@ public class TeleOPV1 extends LinearOpMode {
         //Claws
         //final double clawClosed = 0.50; //0.35
         //final double clawOpen = 0.85;
-        final double claw2Open = 0.35;
-        final double claw2Close = 0.74;
+        final double claw2Open = -0.6;
+        final double claw2Close = 0.7;
 
         //Arm
         final double armStowed = 0.11; //orig 0.14
@@ -109,7 +109,7 @@ public class TeleOPV1 extends LinearOpMode {
         final int lowBasket = 482; //mm
         final int specimenLoad = 519; //mm
         final int specimenScore = 397; //mm
-        final int specimenPickup = 475;//mm
+        final int specimenPickup = 130;//mm
         final int bottom = 0;
 
         boolean specimenToggle = true;
