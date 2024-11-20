@@ -12,7 +12,7 @@ public class SpecClawAction {
 
     public SpecClawAction(HardwareMap hardwareMap) {
         clawServo = hardwareMap.servo.get("claw2");
-        clawServo.setPosition(0.65);
+        clawServo.setPosition(0.7);
     }
 
     public class CloseClaw implements Action {
@@ -20,11 +20,11 @@ public class SpecClawAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                clawServo.setPosition(0.65);
+                clawServo.setPosition(0.7);
                 isInit = true;
             }
 
-            return Math.abs(clawServo.getPosition() - 0.65) > 0.02;
+            return false;
         }
     }
 
@@ -33,11 +33,12 @@ public class SpecClawAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                clawServo.setPosition(-0.65);
+                clawServo.setPosition(-0.6);
                 isInit = true;
             }
 
-            return Math.abs(clawServo.getPosition() + 0.65) > 0.02;
+//            return Math.abs(clawServo.getPosition() + 0.6) > 0.02;
+            return false;
         }
     }
 
@@ -47,6 +48,7 @@ public class SpecClawAction {
 
 
     public Action openClaw() {
+
         return new OpenClaw();
     }
 

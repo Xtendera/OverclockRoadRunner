@@ -29,20 +29,17 @@ public class PreloadedClawClip extends LinearOpMode {
                 drive.actionBuilder(beginPose).strafeTo(new Vector2d(-8, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
-                sliderAction.highChamberScore(),
                 drive.actionBuilder(new Pose2d(-8, 46, Math.toRadians(270))).strafeTo(new Vector2d(-8, 29)).
                         build(),
+                sliderAction.highChamberScore(),
                 specClawAction.openClaw(),
-//                clawAction.closeArm(),
-//                sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(-8, 29,
                         Math.toRadians(270))).
                         //strafeTo(new Vector2d(-11, 48))
                         strafeTo(new Vector2d(-8, 48)).build(),
-                        clawAction.closeArm(),
-                        specClawAction.closeClaw(),
-                        sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(-8,48, Math.toRadians(279))).
+                specClawAction.closeClaw(),
+                sliderAction.reset(),
+                drive.actionBuilder(new Pose2d(-8,48, Math.toRadians(270))).
                         strafeTo(new Vector2d(-36, 48)).
                         strafeTo(new Vector2d(-36, 10)).
                         strafeTo(new Vector2d(-46, 10)).

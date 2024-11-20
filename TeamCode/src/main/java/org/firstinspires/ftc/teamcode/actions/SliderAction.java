@@ -68,10 +68,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < 1100 && sliderLeftMotor.getCurrentPosition() < 1100) {
-                return true;
-            }
-            return false;
+            return sliderRightMotor.getCurrentPosition() < 1100 && sliderLeftMotor.getCurrentPosition() < 1100;
         }
     }
     public class HighChamberScore implements Action {
@@ -88,10 +85,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < (int) (397*3.528) && sliderLeftMotor.getCurrentPosition() < (int) (397*3.528)) {
-                return true;
-            }
-            return false;
+            return sliderRightMotor.getCurrentPosition() > (int) (397 * 3.528) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 3.528);
         }
     }
     public class HighBucket implements Action {
@@ -99,8 +93,8 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition(3300);
-                sliderLeftMotor.setTargetPosition(3300);
+                sliderRightMotor.setTargetPosition((int) (935*3.528));
+                sliderLeftMotor.setTargetPosition((int) (935*3.528));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(0.8);
@@ -108,10 +102,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < 3300 && sliderLeftMotor.getCurrentPosition() < 3300) {
-                return true;
-            }
-            return false;
+            return sliderRightMotor.getCurrentPosition() < (int) (935 * 3.528) && sliderLeftMotor.getCurrentPosition() < (int) (935 * 3.528);
         }
     }
 
@@ -129,10 +120,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < 0 && sliderLeftMotor.getCurrentPosition() < 0) {
-                return true;
-            }
-            return false;
+            return sliderRightMotor.getCurrentPosition() < 0 && sliderLeftMotor.getCurrentPosition() < 0;
         }
     }
 
@@ -148,7 +136,7 @@ public class SliderAction {
     public Action highChamberScore() {
         return new HighChamberScore();
     }
-    public Action HighBucket() {
+    public Action highBucket() {
         return new HighBucket();
     }
     public Action reset() {

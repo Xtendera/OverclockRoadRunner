@@ -11,7 +11,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.actions.ClawAction;
+import org.firstinspires.ftc.teamcode.actions.IntakeAction;
 import org.firstinspires.ftc.teamcode.actions.SliderAction;
+import org.firstinspires.ftc.teamcode.actions.SpecClawAction;
 
 @Autonomous(name = "Clip_Push3_Bucket")
 public class Clip_Push3_Bucket extends LinearOpMode {
@@ -23,26 +25,21 @@ public class Clip_Push3_Bucket extends LinearOpMode {
         waitForStart();
         SliderAction sliderAction = new SliderAction(hardwareMap);
         ClawAction clawAction = new ClawAction(hardwareMap);
+        SpecClawAction specClawAction = new SpecClawAction(hardwareMap);
+        IntakeAction intakeAction = new IntakeAction(hardwareMap);
 
         Actions.runBlocking(new SequentialAction((Action) new ParallelAction(
                 drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
-                sliderAction.highChamberScore(),
                 drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).strafeTo(new Vector2d(8, 29)).
                         build(),
-                clawAction.openClaw(),
-//                clawAction.closeArm(),
-//                sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(8, 29,
-                                Math.toRadians(270))).build(),
-//                                clawAction.closeArm(),
-//                                sliderAction.reset(),
-                        //strafeTo(new Vector2d(-11, 48))
+                sliderAction.highChamberScore(),
+                specClawAction.openClaw(),
                 drive.actionBuilder(new Pose2d(8,29, Math.toRadians(270))).
                         strafeTo(new Vector2d(8, 48)).build(),
-                        clawAction.closeArm(),
-                        sliderAction.reset(),
+                specClawAction.closeClaw(),
+                sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(8,48,Math.toRadians(270))).
                         strafeTo(new Vector2d(36, 48)).
                         strafeTo(new Vector2d(36, 10)).
