@@ -92,7 +92,7 @@ public class FieldCentricTeleOp extends LinearOpMode {
                 armPosition = 300;
                 // TODO: High basket
             }
-
+            //move motors
             frontLeftMotor.setPower(frontLeftPower);
             backLeftMotor.setPower(backLeftPower);
             frontRightMotor.setPower(frontRightPower);
