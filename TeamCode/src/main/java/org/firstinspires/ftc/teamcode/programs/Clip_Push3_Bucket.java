@@ -32,7 +32,7 @@ public class Clip_Push3_Bucket extends LinearOpMode {
                 drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
-                drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).strafeTo(new Vector2d(8, 29)).
+                drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).strafeTo(new Vector2d(8, 27)).
                         build(),
                 sliderAction.highChamberScore(),
                 specClawAction.openClaw(),
@@ -42,16 +42,17 @@ public class Clip_Push3_Bucket extends LinearOpMode {
                 sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(8,48,Math.toRadians(270))).
                         strafeTo(new Vector2d(36, 48)).
-                        strafeTo(new Vector2d(36, 10)).
+                        strafeTo(new Vector2d(36, 13)).
                         //turnTo(Math.toRadians(90)).
-                        strafeTo(new Vector2d(48, 10)).
-                        strafeTo(new Vector2d(48, 61)). //first push
-                        strafeTo(new Vector2d(46, 10)). //back up
-                        strafeTo(new Vector2d(57, 10)). //strafe to second piece
-                        strafeTo(new Vector2d(57, 55)). //second push
-                        strafeTo(new Vector2d(57, 10)). //back up
-                        strafeTo(new Vector2d(63, 10)). //strafe
-                        strafeTo(new Vector2d(63, 53)).build()
+                        strafeTo(new Vector2d(48, 13)).
+                        strafeTo(new Vector2d(48, 53)). //first push
+                        strafeTo(new Vector2d(46, 13)). //back up
+                        strafeTo(new Vector2d(57, 13)). //strafe to second piece
+                        strafeTo(new Vector2d(57, 51)). //second push
+                        strafeTo(new Vector2d(57, 13)).build(), //back up
+                        drive.actionBuilder(new Pose2d(57, 13, Math.toRadians(270)), 9.0).
+                        strafeTo(new Vector2d(63, 13)). //strafe
+                        strafeTo(new Vector2d(63, 51)).build()
 
 //                        turnTo(Math.toRadians(93)).
 //                        strafeTo(new Vector2d(-34, 48)).

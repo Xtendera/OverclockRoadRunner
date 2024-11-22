@@ -32,11 +32,33 @@ public class IntakeAction {
         }
     }
 
+    public class WristReset implements Action {
+        boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                wristServo.setPosition(0.65);
+                isInit = true;
+            }
+            return false;
+        }
+    }
+
+
     public class Outake implements Action {
         boolean isInit = false;
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-            intakeServo.setPower(0.8);
+            intakeServo.setPower(1.0);
+            return false;
+        }
+    }
+
+    public class Intake implements Action {
+        boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            intakeServo.setPower(-1.0);
             return false;
         }
     }
@@ -53,11 +75,18 @@ public class IntakeAction {
         return new Outake();
     }
 
+    public Action intake() {
+        return new Intake();
+    }
+
     public Action stoptake() {
         return new Stoptake();
     }
 
     public Action wristLeft() {
         return new WristLeft();
+    }
+    public Action wristReset() {
+        return new WristReset();
     }
 }

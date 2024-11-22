@@ -31,7 +31,7 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
         Actions.runBlocking(new SequentialAction(
                 new ParallelAction(
                 sliderAction.highBucket(),
-                drive.actionBuilder(beginPose).splineTo(new Vector2d(55, 55), Math.toRadians(45)).build()
+                drive.actionBuilder(beginPose).splineTo(new Vector2d(55, 53), Math.toRadians(45)).build()
                 ),
                 clawAction.armHighBasket(),
                 intakeAction.outake(),
@@ -41,12 +41,54 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
                         clawAction.closeArm(),
                         sliderAction.reset()
                 ),
-                drive.actionBuilder(new Pose2d(55, 55, Math.toRadians(45))).splineTo(new Vector2d(44, 38), Math.toRadians(270)).build(),
+                drive.actionBuilder(new Pose2d(55, 53, Math.toRadians(45)), 0.0).splineTo(new Vector2d(44, 41), Math.toRadians(270)).build(),
                 new ParallelAction(
                         intakeAction.wristLeft(),
                         clawAction.armCollect()
                 ),
-                drive.actionBuilder(new Pose2d(44, 38, Math.toRadians(270))).strafeTo(new Vector2d(50, 38)).build(),
+                drive.actionBuilder(new Pose2d(44, 41, Math.toRadians(270)), 0.0).strafeTo(new Vector2d(48, 41)).build(),
+                intakeAction.intake(),
+                new SleepAction(1),
+                drive.actionBuilder(new Pose2d(48, 41, Math.toRadians(270)), 0.0).strafeTo(new Vector2d(52, 41)).build(),
+                new SleepAction(1),
+                intakeAction.stoptake(),
+                new ParallelAction(
+                    clawAction.closeArm(),
+                    drive.actionBuilder(new Pose2d(52, 41, Math.toRadians(270))).splineTo(new Vector2d(55, 55), Math.toRadians(45)).build(),
+                    sliderAction.highBucket(),
+                    intakeAction.wristReset()
+                ),
+                clawAction.armHighBasket(),
+                new SleepAction(1),
+                intakeAction.outake(),
+                new SleepAction(1),
+                intakeAction.stoptake(),
+                new ParallelAction(
+                        clawAction.closeArm(),
+                        sliderAction.reset()
+                ),
+                drive.actionBuilder(new Pose2d(55, 53, Math.toRadians(45)), 0.0).splineTo(new Vector2d(48, 40), Math.toRadians(270)).build(),
+                new ParallelAction(
+                        intakeAction.wristLeft(),
+                        clawAction.armCollect()
+                ),
+                drive.actionBuilder(new Pose2d(48, 40, Math.toRadians(270)), 0.0).strafeTo(new Vector2d(52, 40)).build(),
+                intakeAction.intake(),
+                new SleepAction(1),
+                drive.actionBuilder(new Pose2d(52, 40, Math.toRadians(270))).strafeTo(new Vector2d(56, 40)).build(),
+                new SleepAction(1),
+                intakeAction.stoptake(),
+                new ParallelAction(
+                        clawAction.closeArm(),
+                        drive.actionBuilder(new Pose2d(52, 40, Math.toRadians(270)), 0.0).splineTo(new Vector2d(56, 55), Math.toRadians(45)).build(),
+                        sliderAction.highBucket(),
+                        intakeAction.wristReset()
+                ),
+                clawAction.armHighBasket(),
+                new SleepAction(1),
+                intakeAction.outake(),
+                new SleepAction(1),
+                intakeAction.stoptake(),
                 new SleepAction(500)
         ));
     }

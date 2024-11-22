@@ -39,16 +39,16 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (519*3.528));
-                sliderLeftMotor.setTargetPosition((int) (519*3.528));
+                sliderRightMotor.setTargetPosition((int) (519*5.0773F));
+                sliderLeftMotor.setTargetPosition((int) (519*5.0773F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                sliderRightMotor.setPower(0.6);
-                sliderLeftMotor.setPower(0.6);
+                sliderRightMotor.setPower(1.0f);
+                sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < (int) (519*3.528) && sliderLeftMotor.getCurrentPosition() < (int) (519*3.528)) {
+            if (sliderRightMotor.getCurrentPosition() < (int) (519*5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (519*5.0773F)) {
                 return true;
             }
             return false;
@@ -63,8 +63,8 @@ public class SliderAction {
                 sliderLeftMotor.setTargetPosition(1100);
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                sliderRightMotor.setPower(0.6);
-                sliderLeftMotor.setPower(0.6);
+                sliderRightMotor.setPower(1.0f);
+                sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
 
@@ -76,16 +76,16 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (397*3.528));
-                sliderLeftMotor.setTargetPosition((int) (397*3.528));
+                sliderRightMotor.setTargetPosition((int) (397*5.0773F));
+                sliderLeftMotor.setTargetPosition((int) (397*5.0773F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                sliderRightMotor.setPower(0.6);
-                sliderLeftMotor.setPower(0.6);
+                sliderRightMotor.setPower(1.0f);
+                sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
 
-            return sliderRightMotor.getCurrentPosition() > (int) (397 * 3.528) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 3.528);
+            return sliderRightMotor.getCurrentPosition() > (int) (397 * 5.0773F) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 5.0773F);
         }
     }
     public class HighBucket implements Action {
@@ -93,16 +93,16 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (935*3.528));
-                sliderLeftMotor.setTargetPosition((int) (935*3.528));
+                sliderRightMotor.setTargetPosition((int) (935*5.0773F));
+                sliderLeftMotor.setTargetPosition((int) (935*5.0773F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                sliderRightMotor.setPower(0.8);
-                sliderLeftMotor.setPower(0.8);
+                sliderRightMotor.setPower(1.0f);
+                sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
 
-            return sliderRightMotor.getCurrentPosition() < (int) (935 * 3.528) && sliderLeftMotor.getCurrentPosition() < (int) (935 * 3.528);
+            return sliderRightMotor.getCurrentPosition() < (int) (935 * 5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (935 * 5.0773F);
         }
     }
 
@@ -115,8 +115,8 @@ public class SliderAction {
                 sliderLeftMotor.setTargetPosition(0);
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                sliderRightMotor.setPower(0.6);
-                sliderLeftMotor.setPower(0.6);
+                sliderRightMotor.setPower(1.0f);
+                sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
 

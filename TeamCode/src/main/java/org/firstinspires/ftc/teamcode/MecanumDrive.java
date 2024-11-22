@@ -63,13 +63,13 @@ public final class MecanumDrive {
                 RevHubOrientationOnRobot.UsbFacingDirection.RIGHT;
 
         // drive model parameters
-        public double inPerTick = 0.0030047888822811357;
-        public double lateralInPerTick = 0.002768386175273523;
-        public double trackWidthTicks = 4074.4195133814424;
+        public double inPerTick = 0.0030047888822811357d;
+        public double lateralInPerTick = 0.0025815046426120656d; // 0.002768386175273523
+        public double trackWidthTicks = 4078.07863689069d;
 
         // feedforward parameters (in tick units)
-        public double kS = 0.7200545649874126;
-        public double kV = 0.0004071192909340734;
+        public double kS = 0.901124825140589d;
+        public double kV = 0.0003961197107796681d;
         public double kA = 0.000025;
 
         // path profile parameters (in inches)
@@ -486,7 +486,23 @@ public final class MecanumDrive {
                                 0.25, 0.1, 1e-2
                         )
                 ),
-                beginPose, 0.0,
+                beginPose, 14.0,
+                defaultTurnConstraints,
+                defaultVelConstraint, defaultAccelConstraint
+        );
+    }
+
+    public TrajectoryActionBuilder actionBuilder(Pose2d beginPose, double stepVel) {
+        return new TrajectoryActionBuilder(
+                TurnAction::new,
+                FollowTrajectoryAction::new,
+                new TrajectoryBuilderParams(
+                        1e-6,
+                        new ProfileParams(
+                                0.25, 0.1, 1e-2
+                        )
+                ),
+                beginPose, stepVel,
                 defaultTurnConstraints,
                 defaultVelConstraint, defaultAccelConstraint
         );

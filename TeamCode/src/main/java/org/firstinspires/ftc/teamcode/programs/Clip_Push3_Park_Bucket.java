@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.actions.ClawAction;
+import org.firstinspires.ftc.teamcode.actions.IntakeAction;
 import org.firstinspires.ftc.teamcode.actions.SliderAction;
 import org.firstinspires.ftc.teamcode.actions.SpecClawAction;
 
@@ -25,6 +26,7 @@ public class Clip_Push3_Park_Bucket extends LinearOpMode {
         SliderAction sliderAction = new SliderAction(hardwareMap);
         ClawAction clawAction = new ClawAction(hardwareMap);
         SpecClawAction specClawAction = new SpecClawAction(hardwareMap);
+        IntakeAction intakeAction = new IntakeAction(hardwareMap);
 
         Actions.runBlocking(new SequentialAction((Action) new ParallelAction(
                 drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
@@ -40,15 +42,15 @@ public class Clip_Push3_Park_Bucket extends LinearOpMode {
                 sliderAction.reset(),
                 drive.actionBuilder(new Pose2d(8,48,Math.toRadians(270))).
                         strafeTo(new Vector2d(36, 48)).
-                        strafeTo(new Vector2d(36, 10)).
+                        strafeTo(new Vector2d(36, 13)).
                         //turnTo(Math.toRadians(90)).
-                                strafeTo(new Vector2d(48, 10)).
+                                strafeTo(new Vector2d(48, 13)).
                         strafeTo(new Vector2d(48, 61)). //first push
-                        strafeTo(new Vector2d(46, 10)). //back up
-                        strafeTo(new Vector2d(57, 10)). //strafe to second piece
+                        strafeTo(new Vector2d(46, 13)). //back up
+                        strafeTo(new Vector2d(57, 13)). //strafe to second piece
                         strafeTo(new Vector2d(57, 55)). //second push
-                        strafeTo(new Vector2d(57, 10)). //back up
-                        strafeTo(new Vector2d(63, 10)). //strafe
+                        strafeTo(new Vector2d(57, 13)).build(), //back up
+                        drive.actionBuilder(new Pose2d(57, 13, Math.toRadians(270)), 9.0).strafeTo(new Vector2d(63, 13)). //strafe
                         strafeTo(new Vector2d(63, 53)).
                         strafeTo(new Vector2d(63, 40)).
                         strafeTo(new Vector2d(-40,40)).
