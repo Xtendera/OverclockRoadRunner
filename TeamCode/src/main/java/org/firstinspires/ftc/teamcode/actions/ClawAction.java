@@ -51,11 +51,11 @@ public class ClawAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                armLeft.setPosition(0.11);
+                armLeft.setPosition(0.08);
                 isInit = true;
             }
 
-            return Math.abs(armLeft.getPosition() - 0.11) > 0.02;
+            return Math.abs(armLeft.getPosition() - 0.08) > 0.02;
         }
     }
 
@@ -76,10 +76,10 @@ public class ClawAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                armLeft.setPosition(0.46);
+                armLeft.setPosition(0.423f);
                 isInit = true;
             }
-            return Math.abs(armLeft.getPosition() - 0.46) > 0.02;
+            return Math.abs(armLeft.getPosition() - 0.423f) > 0.02;
         }
     }
     public class ArmBasket implements Action {
@@ -99,10 +99,10 @@ public class ClawAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                armLeft.setPosition(0.275);
+                armLeft.setPosition(0.255f);
                 isInit = true;
             }
-            return Math.abs(armLeft.getPosition() - 0.275) > 0.02;
+            return Math.abs(armLeft.getPosition() - 0.255f) > 0.02;
         }
     }
 

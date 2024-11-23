@@ -15,8 +15,13 @@ import org.firstinspires.ftc.teamcode.actions.IntakeAction;
 import org.firstinspires.ftc.teamcode.actions.SliderAction;
 import org.firstinspires.ftc.teamcode.actions.SpecClawAction;
 
-@Autonomous(name = "HighBucket_Bucket3_Bucket")
-public class HighBucket_Bucket3_Bucket extends LinearOpMode {
+@Autonomous(name = "Prediction_HighBucket_Bucket3_Bucket")
+public class Prediction_HighBucket_Bucket3_Bucket extends LinearOpMode {
+
+    private Pose2d getPosition(MecanumDrive drive) {
+        drive.updatePoseEstimate();
+        return drive.pose;
+    }
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -34,7 +39,6 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
                 drive.actionBuilder(beginPose).splineTo(new Vector2d(55, 53), Math.toRadians(45)).build()
                 ),
                 clawAction.armHighBasket(),
-                new SleepAction(1),
                 intakeAction.outake(),
                 new SleepAction(1),
                 intakeAction.stoptake(),
@@ -42,20 +46,20 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
                         clawAction.closeArm(),
                         sliderAction.reset()
                 ),
-                drive.actionBuilder(new Pose2d(55, 53, Math.toRadians(45)), 0.0).splineTo(new Vector2d(44, 41), Math.toRadians(270)).build(),
+                drive.actionBuilder(getPosition(drive), 0.0).splineTo(new Vector2d(44, 41), Math.toRadians(270)).build(),
                 new ParallelAction(
                         intakeAction.wristLeft(),
                         clawAction.armCollect()
                 ),
-                drive.actionBuilder(new Pose2d(44, 41, Math.toRadians(270)), 0.0).strafeTo(new Vector2d(48, 41)).build(),
+                drive.actionBuilder(getPosition(drive), 0.0).strafeTo(new Vector2d(48, 41)).build(),
                 intakeAction.intake(),
                 new SleepAction(1),
-                drive.actionBuilder(new Pose2d(48, 41, Math.toRadians(270)), 0.0).strafeTo(new Vector2d(52, 41)).build(),
+                drive.actionBuilder(getPosition(drive), 0.0).strafeTo(new Vector2d(52, 41)).build(),
                 new SleepAction(1),
                 intakeAction.stoptake(),
                 new ParallelAction(
                     clawAction.closeArm(),
-                    drive.actionBuilder(new Pose2d(52, 41, Math.toRadians(270))).splineTo(new Vector2d(55, 55), Math.toRadians(45)).build(),
+                    drive.actionBuilder(getPosition(drive)).splineTo(new Vector2d(55, 55), Math.toRadians(45)).build(),
                     sliderAction.highBucket(),
                     intakeAction.wristReset()
                 ),
@@ -68,20 +72,20 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
                         clawAction.closeArm(),
                         sliderAction.reset()
                 ),
-                drive.actionBuilder(new Pose2d(55, 55, Math.toRadians(45)), 0.0).splineTo(new Vector2d(48, 40), Math.toRadians(270)).build(),
+                drive.actionBuilder(getPosition(drive), 0.0).splineTo(new Vector2d(48, 40), Math.toRadians(270)).build(),
                 new ParallelAction(
                         intakeAction.wristLeft(),
                         clawAction.armCollect()
                 ),
-                drive.actionBuilder(new Pose2d(48, 40, Math.toRadians(270)), 0.0).strafeTo(new Vector2d(52, 40)).build(),
+                drive.actionBuilder(getPosition(drive), 0.0).strafeTo(new Vector2d(52, 40)).build(),
                 intakeAction.intake(),
                 new SleepAction(1),
-                drive.actionBuilder(new Pose2d(52, 40, Math.toRadians(270))).strafeTo(new Vector2d(58, 40)).build(),
+                drive.actionBuilder(getPosition(drive)).strafeTo(new Vector2d(58, 40)).build(),
                 new SleepAction(1),
                 intakeAction.stoptake(),
                 new ParallelAction(
                         clawAction.closeArm(),
-                        drive.actionBuilder(new Pose2d(58, 40, Math.toRadians(270)), 0.0).splineTo(new Vector2d(57, 53), Math.toRadians(45)).build(),
+                        drive.actionBuilder(getPosition(drive), 0.0).splineTo(new Vector2d(57, 53), Math.toRadians(45)).build(),
                         sliderAction.highBucket(),
                         intakeAction.wristReset()
                 ),
@@ -92,10 +96,7 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
                 intakeAction.stoptake(),
                 new SleepAction(1),
                 clawAction.closeArm(),
-                new SleepAction(1),
-                sliderAction.reset(),
-                new SleepAction(4)
-
+                sliderAction.reset()
         ));
     }
 }

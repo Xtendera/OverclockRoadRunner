@@ -29,23 +29,23 @@ public class Clip_Push3_Bucket extends LinearOpMode {
         IntakeAction intakeAction = new IntakeAction(hardwareMap);
 
         Actions.runBlocking(new SequentialAction((Action) new ParallelAction(
-                drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
+                drive.actionBuilder(beginPose).strafeTo(new Vector2d(0, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
-                drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).strafeTo(new Vector2d(8, 27)).
+                drive.actionBuilder(new Pose2d(0, 46, Math.toRadians(270))).strafeTo(new Vector2d(0, 27)).
                         build(),
                 sliderAction.highChamberScore(),
                 specClawAction.openClaw(),
-                drive.actionBuilder(new Pose2d(8,29, Math.toRadians(270))).
-                        strafeTo(new Vector2d(8, 48)).build(),
+                drive.actionBuilder(new Pose2d(0,29, Math.toRadians(270))).
+                        strafeTo(new Vector2d(0, 48)).build(),
                 specClawAction.closeClaw(),
                 sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(8,48,Math.toRadians(270))).
+                drive.actionBuilder(new Pose2d(0,48,Math.toRadians(270))).
                         strafeTo(new Vector2d(36, 48)).
                         strafeTo(new Vector2d(36, 13)).
                         //turnTo(Math.toRadians(90)).
                         strafeTo(new Vector2d(48, 13)).
-                        strafeTo(new Vector2d(48, 53)). //first push
+                        strafeTo(new Vector2d(48, 61)). //first push
                         strafeTo(new Vector2d(46, 13)). //back up
                         strafeTo(new Vector2d(57, 13)). //strafe to second piece
                         strafeTo(new Vector2d(57, 51)). //second push

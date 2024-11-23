@@ -29,18 +29,18 @@ public class Clip_Push3_Park_Bucket extends LinearOpMode {
         IntakeAction intakeAction = new IntakeAction(hardwareMap);
 
         Actions.runBlocking(new SequentialAction((Action) new ParallelAction(
-                drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
+                drive.actionBuilder(beginPose).strafeTo(new Vector2d(0, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
-                drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).strafeTo(new Vector2d(8, 29)).
+                drive.actionBuilder(new Pose2d(0, 46, Math.toRadians(270))).strafeTo(new Vector2d(0, 29)).
                         build(),
                 sliderAction.highChamberScore(),
                 specClawAction.openClaw(),
-                drive.actionBuilder(new Pose2d(8,29, Math.toRadians(270))).
-                        strafeTo(new Vector2d(8, 48)).build(),
+                drive.actionBuilder(new Pose2d(0,29, Math.toRadians(270))).
+                        strafeTo(new Vector2d(0, 48)).build(),
                 specClawAction.closeClaw(),
                 sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(8,48,Math.toRadians(270))).
+                drive.actionBuilder(new Pose2d(0,48,Math.toRadians(270))).
                         strafeTo(new Vector2d(36, 48)).
                         strafeTo(new Vector2d(36, 13)).
                         //turnTo(Math.toRadians(90)).

@@ -24,19 +24,19 @@ public class Clip_Park_Bucket extends LinearOpMode {
         ClawAction clawAction = new ClawAction(hardwareMap);
 
         Actions.runBlocking(new SequentialAction(new ParallelAction(
-                drive.actionBuilder(beginPose).strafeTo(new Vector2d(8, 46)).build(),
+                drive.actionBuilder(beginPose).strafeTo(new Vector2d(0, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
                 sliderAction.highChamberScore(),
-                drive.actionBuilder(new Pose2d(8, 46, Math.toRadians(270))).
-                        strafeTo(new Vector2d(8, 29)).
+                drive.actionBuilder(new Pose2d(0, 46, Math.toRadians(270))).
+                        strafeTo(new Vector2d(0, 29)).
                         build(),
                 clawAction.openClaw(),
                 clawAction.closeArm(),
                 sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(8, 29,
+                drive.actionBuilder(new Pose2d(0, 29,
                                     Math.toRadians(270))).
-                                    strafeTo(new Vector2d(8, 60)).
+                                    strafeTo(new Vector2d(0, 60)).
                                     strafeTo(new Vector2d(-45,60)).build() //final push
         ));
         // sleep(9999999);

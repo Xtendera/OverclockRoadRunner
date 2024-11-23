@@ -24,11 +24,11 @@ public class Clip_Park_HP extends LinearOpMode {
         ClawAction clawAction = new ClawAction(hardwareMap);
 
         Actions.runBlocking(new SequentialAction(new ParallelAction(
-                drive.actionBuilder(beginPose).strafeTo(new Vector2d(-8, 46)).build(),
+                drive.actionBuilder(beginPose).strafeTo(new Vector2d(0, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
                 sliderAction.highChamberScore(),
-                drive.actionBuilder(new Pose2d(-8, 46, Math.toRadians(270))).strafeTo(new Vector2d(-8, 29)).
+                drive.actionBuilder(new Pose2d(0, 46, Math.toRadians(270))).strafeTo(new Vector2d(0, 29)).
                         build(),
                 clawAction.openClaw(),
                 clawAction.closeArm(),
