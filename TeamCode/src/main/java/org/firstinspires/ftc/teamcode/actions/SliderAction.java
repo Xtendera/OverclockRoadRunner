@@ -105,6 +105,23 @@ public class SliderAction {
             return sliderRightMotor.getCurrentPosition() < (int) (935 * 5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (935 * 5.0773F);
         }
     }
+    public class WallPickup implements Action {
+        private boolean isInit = false;
+        @Override
+        public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+            if (!isInit) {
+                sliderRightMotor.setTargetPosition((int) (130*5.0773F));
+                sliderLeftMotor.setTargetPosition((int) (130*5.0773F));
+                sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                sliderRightMotor.setPower(1.0f);
+                sliderLeftMotor.setPower(1.0f);
+                isInit = true;
+            }
+
+            return sliderRightMotor.getCurrentPosition() < (int) (130 * 5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (130 * 5.0773F);
+        }
+    }
 
     public class Reset implements Action {
         private boolean isInit = false;
@@ -138,6 +155,9 @@ public class SliderAction {
     }
     public Action highBucket() {
         return new HighBucket();
+    }
+    public Action wallPickup() {
+        return new WallPickup();
     }
     public Action reset() {
         return new Reset();
