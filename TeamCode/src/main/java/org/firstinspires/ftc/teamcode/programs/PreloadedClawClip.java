@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.programs;
 import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
+import com.acmerobotics.roadrunner.SleepAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -29,17 +30,17 @@ public class PreloadedClawClip extends LinearOpMode {
                 drive.actionBuilder(beginPose).strafeTo(new Vector2d(-8, 46)).build(),
                 sliderAction.highChamberLoad()
         ),
-                drive.actionBuilder(new Pose2d(-8, 46, Math.toRadians(270))).strafeTo(new Vector2d(-8, 29)).
+                drive.actionBuilder(new Pose2d(-8, 46, Math.toRadians(270))).strafeTo(new Vector2d(-4, 29)).
                         build(),
                 sliderAction.highChamberScore(),
                 specClawAction.openClaw(),
-                drive.actionBuilder(new Pose2d(-8, 29,
+                drive.actionBuilder(new Pose2d(-4, 29,
                         Math.toRadians(270))).
                         //strafeTo(new Vector2d(-11, 48))
-                        strafeTo(new Vector2d(-8, 48)).build(),
+                        strafeTo(new Vector2d(-4, 48)).build(),
                 specClawAction.closeClaw(),
                 sliderAction.reset(),
-                drive.actionBuilder(new Pose2d(-8,48, Math.toRadians(270))).
+                drive.actionBuilder(new Pose2d(-4,48, Math.toRadians(270))).
                         strafeTo(new Vector2d(-36, 48)).
                         strafeTo(new Vector2d(-36, 10)).
                         strafeTo(new Vector2d(-46, 10)).

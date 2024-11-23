@@ -80,7 +80,7 @@ public class HighBucket_Bucket3_Bucket extends LinearOpMode {
                 intakeAction.stoptake(),
                 new ParallelAction(
                         clawAction.closeArm(),
-                        drive.actionBuilder(new Pose2d(52, 40, Math.toRadians(270)), 0.0).splineTo(new Vector2d(56, 55), Math.toRadians(45)).build(),
+                        drive.actionBuilder(new Pose2d(52, 40, Math.toRadians(270)), 0.0).splineTo(new Vector2d(58, 58), Math.toRadians(45)).build(),
                         sliderAction.highBucket(),
                         intakeAction.wristReset()
                 ),
