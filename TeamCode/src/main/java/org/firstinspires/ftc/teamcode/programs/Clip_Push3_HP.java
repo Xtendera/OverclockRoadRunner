@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.programs;
 import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
-import com.acmerobotics.roadrunner.SleepAction;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -15,7 +14,7 @@ import org.firstinspires.ftc.teamcode.actions.SliderAction;
 import org.firstinspires.ftc.teamcode.actions.SpecClawAction;
 
 @Autonomous(name = "Clip_Push3_HP")
-public class PreloadedClawClip extends LinearOpMode {
+public class Clip_Push3_HP extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
