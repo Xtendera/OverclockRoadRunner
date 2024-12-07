@@ -39,8 +39,8 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (519*5.0773F));
-                sliderLeftMotor.setTargetPosition((int) (519*5.0773F));
+                sliderRightMotor.setTargetPosition((int) (519*3.528F));
+                sliderLeftMotor.setTargetPosition((int) (519*3.528F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(1.0f);
@@ -48,7 +48,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < (int) (519*5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (519*5.0773F)) {
+            if (sliderRightMotor.getCurrentPosition() < (int) (519*3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (519*3.528F)) {
                 return true;
             }
             return false;
@@ -76,8 +76,8 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (397*5.0773F));
-                sliderLeftMotor.setTargetPosition((int) (397*5.0773F));
+                sliderRightMotor.setTargetPosition((int) (397*3.528F));
+                sliderLeftMotor.setTargetPosition((int) (397*3.528F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(1.0f);
@@ -85,7 +85,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            return sliderRightMotor.getCurrentPosition() > (int) (397 * 5.0773F) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 5.0773F);
+            return sliderRightMotor.getCurrentPosition() > (int) (397 * 3.528F) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 3.528F);
         }
     }
     public class HighBucket implements Action {
@@ -93,8 +93,8 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (935*5.0773F));
-                sliderLeftMotor.setTargetPosition((int) (935*5.0773F));
+                sliderRightMotor.setTargetPosition((int) (825*3.528F));
+                sliderLeftMotor.setTargetPosition((int) (825*3.528F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(1.0f);
@@ -102,7 +102,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            return sliderRightMotor.getCurrentPosition() < (int) (935 * 5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (935 * 5.0773F);
+            return sliderRightMotor.getCurrentPosition() < (int) (825 * 3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (935 * 3.528F);
         }
     }
     public class WallPickup implements Action {
@@ -110,8 +110,8 @@ public class SliderAction {
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
-                sliderRightMotor.setTargetPosition((int) (130*5.0773F));
-                sliderLeftMotor.setTargetPosition((int) (130*5.0773F));
+                sliderRightMotor.setTargetPosition((int) (130*3.528F));
+                sliderLeftMotor.setTargetPosition((int) (130*3.528F));
                 sliderRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 sliderRightMotor.setPower(1.0f);
@@ -119,7 +119,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            return sliderRightMotor.getCurrentPosition() < (int) (130 * 5.0773F) && sliderLeftMotor.getCurrentPosition() < (int) (130 * 5.0773F);
+            return sliderRightMotor.getCurrentPosition() < (int) (130 * 3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (130 * 3.528F);
         }
     }
 
