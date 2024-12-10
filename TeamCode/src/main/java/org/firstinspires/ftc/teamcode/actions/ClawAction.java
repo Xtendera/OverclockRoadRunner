@@ -127,6 +127,17 @@ public class ClawAction {
         return new ArmBasket();
     }
 
+    public Action armContact() {
+        return new Action() {
+            @Override
+            public boolean run(@NonNull TelemetryPacket telemetryPacket) {
+                armLeft.setPosition(0.6);
+
+                return false;
+            }
+        };
+    }
+
     public Action armHighBasket() {
         return new ArmHighBasket();
     }

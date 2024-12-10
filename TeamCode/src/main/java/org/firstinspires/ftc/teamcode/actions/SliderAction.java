@@ -36,6 +36,15 @@ public class SliderAction {
     }
     public class HighChamberLoad implements Action {
         private boolean isInit = false;
+        private boolean isPar = false;
+
+        public HighChamberLoad() {
+
+        }
+        public HighChamberLoad(boolean parallel) {
+            isPar = parallel;
+        }
+
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
@@ -48,7 +57,7 @@ public class SliderAction {
                 isInit = true;
             }
 
-            if (sliderRightMotor.getCurrentPosition() < (int) (519*3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (519*3.528F)) {
+            if (sliderRightMotor.getCurrentPosition() < (int) (519*3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (519*3.528F) && !isPar) {
                 return true;
             }
             return false;
@@ -73,6 +82,16 @@ public class SliderAction {
     }
     public class HighChamberScore implements Action {
         private boolean isInit = false;
+        private boolean isPar = false;
+        
+        public HighChamberScore() {
+            
+        }
+
+        public HighChamberScore(boolean parallel) {
+            isPar = parallel;
+        }
+        
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
@@ -84,8 +103,11 @@ public class SliderAction {
                 sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
-
-            return sliderRightMotor.getCurrentPosition() > (int) (397 * 3.528F) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 3.528F);
+            if (!isPar) {
+                return sliderRightMotor.getCurrentPosition() > (int) (397 * 3.528F) && sliderLeftMotor.getCurrentPosition() > (int) (397 * 3.528F);
+            } else {
+                return false;
+            }
         }
     }
     public class HighBucket implements Action {
@@ -107,6 +129,16 @@ public class SliderAction {
     }
     public class WallPickup implements Action {
         private boolean isInit = false;
+        private boolean isPar = false;
+
+        public WallPickup() {
+
+        }
+
+        public WallPickup(boolean parallel) {
+            isPar = parallel;
+        }
+
         @Override
         public boolean run(@NonNull TelemetryPacket telemetryPacket) {
             if (!isInit) {
@@ -118,8 +150,11 @@ public class SliderAction {
                 sliderLeftMotor.setPower(1.0f);
                 isInit = true;
             }
-
-            return sliderRightMotor.getCurrentPosition() < (int) (130 * 3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (130 * 3.528F);
+            if (!isPar) {
+                return sliderRightMotor.getCurrentPosition() < (int) (130 * 3.528F) && sliderLeftMotor.getCurrentPosition() < (int) (130 * 3.528F);
+            } else {
+                return false;
+            }
         }
     }
 
@@ -147,17 +182,28 @@ public class SliderAction {
     public Action highChamber() {
         return new HighChamber();
     }
+    public Action highChamberLoad(boolean parallel) {
+        return new HighChamberLoad(parallel);
+    }
+
     public Action highChamberLoad() {
         return new HighChamberLoad();
     }
+
     public Action highChamberScore() {
         return new HighChamberScore();
+    }
+    public Action highChamberScore(boolean parallel) {
+        return new HighChamberScore(parallel);
     }
     public Action highBucket() {
         return new HighBucket();
     }
     public Action wallPickup() {
         return new WallPickup();
+    }
+    public Action wallPickup(boolean parallel) {
+        return new WallPickup(parallel);
     }
     public Action reset() {
         return new Reset();
